@@ -4,6 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Météo à Niort</title>
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
   <h1>Météo à Niort</h1>
@@ -12,29 +13,6 @@
   <p id="vent">Vent : Chargement...</p>
   <p id="date">Dernière mise à jour : Chargement...</p>
 
-  <script>
-    // Remplacer par ta clé API
-    const apiKey = 'b1e46097485e2f4d62ba4f7eb5d4ee8b';
-    const ville = 'Niort';
-    const pays = 'FR';
-    
-    // URL de l'API
-    const url = `https://api.openweathermap.org/data/2.5/weather?q=${ville},${pays}&appid=${apiKey}&units=metric&lang=fr`;
-
-    // Récupérer les données de l'API
-    fetch(url)
-      .then(response => response.json())
-      .then(data => {
-        // Mettre à jour l'interface avec les données
-        document.getElementById('temperature').textContent = `Température : ${data.main.temp} °C`;
-        document.getElementById('humidite').textContent = `Humidité : ${data.main.humidity}%`;
-        document.getElementById('vent').textContent = `Vent : ${data.wind.speed} km/h`;
-
-        // Afficher la date de la dernière mise à jour
-        const date = new Date(data.dt * 1000);
-        document.getElementById('date').textContent = `Dernière mise à jour : ${date.toLocaleString()}`;
-      })
-      .catch(error => console.error("Erreur API :", error));
-  </script>
+  <script src="meteo.js"></script>
 </body>
 </html>
